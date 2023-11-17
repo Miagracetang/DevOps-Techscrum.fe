@@ -13,8 +13,8 @@ pipeline {
             steps {
                 withAWS(credentials: '8e63c1fe-a242-4779-bddc-17569e9888c8', region: 'ap-southeast-2') {
                     sh 'echo "hello Jenkins">hello.txt'
-                    s3Upload acl: 'Private', bucket: 'devopslee', file: 'hello.txt'
-                    s3Download bucket: 'devopslee', file: 'downloadedHello.txt', path: 'hello.txt'
+                    s3Upload acl: 'Private', bucket: 'test-jenkins-miagracetang', file: 'hello.txt'
+                    s3Download bucket: 'test-jenkins-miagracetang', file: 'downloadedHello.txt', path: 'hello.txt'
                     sh 'cat downloadedHello.txt'
                 }
             }
