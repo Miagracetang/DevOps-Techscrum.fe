@@ -12,8 +12,7 @@ pipeline {
         stage('test AWS credentials') {
             steps {
                 withAWS(credentials: '8e63c1fe-a242-4779-bddc-17569e9888c8', region: 'ap-southeast-2') {
-                    s3Download bucket: 'test-jenkins-miagracetang', file: 'downloadedHello.txt', path: 'hello.txt'
-                    sh 'cat downloadedHello.txt'
+                    s3DoesObjectExist bucket: 'test-jenkins-miagracetang', path: 'hello.txt'
                 }
             }
         }
